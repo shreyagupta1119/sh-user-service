@@ -6,9 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-import static sun.plugin.javascript.navig.JSType.Document;
-
-
 /**
  * Created by shreya on 1/12/16.
  */
