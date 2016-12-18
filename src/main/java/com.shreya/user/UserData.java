@@ -1,9 +1,11 @@
 package com.shreya.user;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,13 +15,14 @@ import java.util.List;
 @Data
 @Document(collection="user")
 public class UserData {
+
     @Id
     private String contactNumber;
     private String name;
     private String password;
-    private int numberOfWins;
-    private int numberOfLose;
-    private int numberOfDraw;
+    private String numberOfWins;
+    private String  numberOfLose;
+    private String  numberOfDraw;
     private Boolean online;
     private List<UserData> friends;
 
@@ -29,19 +32,19 @@ public class UserData {
         this.contactNumber = contactNumber;
         this.name = name;
         this.password = password;
-        this.numberOfWins = 0;
-        this.numberOfLose = 0;
-        this.numberOfDraw = 0;
-        this.online = true;
-        this.friends = null;
+        this.numberOfWins = "0";
+        this.numberOfLose = "0";
+        this.numberOfDraw = "0";
+        this.online = false;
+        this.friends = new ArrayList<UserData>();
     }
 
     @Override
     public String toString() {
-        return "player [ contactnumber=" + contactNumber + ", name =" + name + ", password=" + password + ", numberOfWins=" +
-                numberOfWins + ", numberOflose=" + numberOfLose + ", numberOfdraws=" + numberOfDraw + ", total match played=" +
-                numberOfWins + numberOfLose + numberOfDraw + ", player online status= " + online + ", friends=" + friends;
-    }
+        return "User [ contactnumber=" + contactNumber + ", name =" + name + ", password=" + password + ", numberOfWins=" +
+                Integer.parseInt(numberOfWins) + ", numberOflose=" + Integer.parseInt(numberOfLose) + ", numberOfdraws=" +
+                Integer.parseInt(numberOfDraw) +  ", player online status= " + online + ", friends=" + friends;
+   }
 
 }
 
